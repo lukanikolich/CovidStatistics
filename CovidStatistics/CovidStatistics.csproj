@@ -18,11 +18,13 @@
     <None Remove="Microsoft.AspNet.WebApi.Core" />
     <None Remove="Entities\" />
     <None Remove="Helpers\" />
+    <None Remove="Postman\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Entities\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Postman\" />
   </ItemGroup>
 </Project>

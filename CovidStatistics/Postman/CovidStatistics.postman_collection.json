@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "8a7ebc9d-14ea-427c-b8ad-558734e68292",
+		"name": "CovidStatistics",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/region/cases",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "myprecious",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "gollum",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/region/cases?region=PO",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"region",
+						"cases"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2020-09-28",
+							"disabled": true
+						},
+						{
+							"key": "to",
+							"value": "2021-09-28",
+							"disabled": true
+						},
+						{
+							"key": "region",
+							"value": "PO"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/region/lastweek",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/region/lastweek",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"region",
+						"lastweek"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/region/auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"gollum\",\n    \"password\": \"myprecious\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/user/auth",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"user",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
