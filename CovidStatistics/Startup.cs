@@ -25,6 +25,8 @@ namespace CovidStatistics
             services.AddCors();
             services.AddControllers();
 
+            services.AddSingleton<IRegionService, RegionService>();
+
             // configure basic authentication 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);

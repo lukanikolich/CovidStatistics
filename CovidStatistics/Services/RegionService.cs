@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using CovidStatistics.Entities;
 using CovidStatistics.Helpers;
@@ -7,30 +8,50 @@ using FileHelpers;
 
 namespace CovidStatistics.Services
 {
-    public class RegionService
+    public interface IRegionService
     {
+        RegionCasesCsv[] GetRegionCasesCsvList();
+        List<RegionCasesModel> RegionCasesCsvToResponse(RegionCasesCsv[] regionCasesCsvListFilteredByDate, RegionEnum region);
+    }
+
+
+    public class RegionService : IRegionService
+    {
+        private DateTime _lastFetch;
+        private RegionCasesCsv[] _regionCasesCsvlist;
+
         public RegionService()
         {
+            _lastFetch = DateTime.MinValue;
         }
 
-        public static RegionCasesCsv[] GetRegionCasesCsvList()
+        public RegionCasesCsv[] GetRegionCasesCsvList()
         {
-            // Read file
-            string fileName = "region-cases.csv";
-            using (var client = new WebClient())
+            // Read from memory if data is less than 10 minutes old
+            if ((DateTime.Now - _lastFetch).Minutes < 10)
             {
-                client.DownloadFile("https://raw.githubusercontent.com/sledilnik/data/master/csv/region-cases.csv", fileName);
+                return _regionCasesCsvlist;
             }
+            else
+            {
+                // Read file
+                string fileName = "region-cases.csv";
+                using (var client = new WebClient())
+                {
+                    client.DownloadFile("https://raw.githubusercontent.com/sledilnik/data/master/csv/region-cases.csv", fileName);
+                }
 
-            // Map .csv to array of objects and delete file
-            var engine = new FileHelperEngine<RegionCasesCsv>();
-            RegionCasesCsv[] regionCasesCsvList = engine.ReadFile(fileName);
-            System.IO.File.Delete(fileName);
-            return regionCasesCsvList;
+                // Map .csv to array of objects and delete file
+                var engine = new FileHelperEngine<RegionCasesCsv>();
+                RegionCasesCsv[] regionCasesCsvList = engine.ReadFile(fileName);
+                System.IO.File.Delete(fileName);
+                _regionCasesCsvlist = regionCasesCsvList;
+                _lastFetch = DateTime.Now;
+                return regionCasesCsvList;
+            }
         }
 
-
-        public static List<RegionCasesModel> RegionCasesCsvToResponse(RegionCasesCsv[] regionCasesCsvListFilteredByDate, RegionEnum region)
+        public List<RegionCasesModel> RegionCasesCsvToResponse(RegionCasesCsv[] regionCasesCsvListFilteredByDate, RegionEnum region)
         {
             List<RegionCasesModel> result = new List<RegionCasesModel>();
             foreach (RegionCasesCsv regionCasesCsv in regionCasesCsvListFilteredByDate)

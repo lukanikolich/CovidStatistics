@@ -15,6 +15,13 @@ namespace CovidStatistics.Controllers
     [Route("api/region")]
     public class RegionController : Controller
     {
+        private readonly IRegionService _regionService;
+
+        public RegionController(IRegionService regionService)
+        {
+            _regionService = regionService;
+        }
+
         [HttpGet("cases")]
         public IActionResult GetCases([FromQuery] RegionEnum? region = null,
                                          [FromQuery] DateTime? from = null,
@@ -27,7 +34,7 @@ namespace CovidStatistics.Controllers
                 return BadRequest(validationService.Errors);
 
             // Read data
-            RegionCasesCsv[] regionCasesCsvList = RegionService.GetRegionCasesCsvList();
+            RegionCasesCsv[] regionCasesCsvList = _regionService.GetRegionCasesCsvList();
 
             // Filter data by date
             int startIndex = 0;
@@ -47,14 +54,14 @@ namespace CovidStatistics.Controllers
             RegionCasesCsv[] regionCasesCsvListFilteredByDate = regionCasesCsvList.Skip(startIndex).Take(endIndex - startIndex).ToArray();
 
             // Map to response object and return
-            return Ok(RegionService.RegionCasesCsvToResponse(regionCasesCsvListFilteredByDate, region.Value));
+            return Ok(_regionService.RegionCasesCsvToResponse(regionCasesCsvListFilteredByDate, region.Value));
         }
 
         [HttpGet("lastweek")]
         public IActionResult GetLastWeek()
         {
             // Read data
-            RegionCasesCsv[] regionCasesCsvList = RegionService.GetRegionCasesCsvList();
+            RegionCasesCsv[] regionCasesCsvList = _regionService.GetRegionCasesCsvList();
             RegionCasesCsv[] regionCasesLastSevenDays = regionCasesCsvList.Skip(Math.Max(0, regionCasesCsvList.Count() - 7)).ToArray();
 
             RegionLastweekModel lj = new RegionLastweekModel("Ljubljana");
