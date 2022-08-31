@@ -20,6 +20,8 @@ namespace CovidStatistics.Entities
         public int CeVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int CeVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int CeVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int ForeignCasesActive;
@@ -38,6 +40,8 @@ namespace CovidStatistics.Entities
         public int KkVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int KkVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int KkVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int KpCasesActive;
@@ -49,6 +53,8 @@ namespace CovidStatistics.Entities
         public int KpVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int KpVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int KpVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int KrCasesActive;
@@ -60,6 +66,8 @@ namespace CovidStatistics.Entities
         public int KrVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int KrVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int KrVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int LjCasesActive;
@@ -71,6 +79,8 @@ namespace CovidStatistics.Entities
         public int LjVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int LjVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int LjVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int MbCasesActive;
@@ -82,6 +92,8 @@ namespace CovidStatistics.Entities
         public int MbVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int MbVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int MbVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int MsCasesActive;
@@ -93,6 +105,8 @@ namespace CovidStatistics.Entities
         public int MsVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int MsVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int MsVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int NgCasesActive;
@@ -104,6 +118,8 @@ namespace CovidStatistics.Entities
         public int NgVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int NgVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int NgVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int NmCasesActive;
@@ -115,6 +131,8 @@ namespace CovidStatistics.Entities
         public int NmVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int NmVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int NmVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int PoCasesActive;
@@ -126,6 +144,8 @@ namespace CovidStatistics.Entities
         public int PoVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int PoVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int PoVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int SgCasesActive;
@@ -137,6 +157,8 @@ namespace CovidStatistics.Entities
         public int SgVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int SgVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int SgVaccinated3rdToDate;
 
         [FieldNullValue(typeof(int), "0")]
         public int UnknownCasesActive;
@@ -155,6 +177,8 @@ namespace CovidStatistics.Entities
         public int ZaVaccinated1stToDate;
         [FieldNullValue(typeof(int), "0")]
         public int ZaVaccinated2ndToDate;
+        [FieldNullValue(typeof(int), "0")]
+        public int ZaVaccinated3rdToDate;
 
         public int CompareTo(object obj)
         {
